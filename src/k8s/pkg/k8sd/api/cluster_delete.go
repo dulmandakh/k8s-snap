@@ -27,10 +27,10 @@ func (e *Endpoints) deleteCluster(s *state.State, r *http.Request) response.Resp
 	if err := snaputil.StopControlPlaneServices(s.Context, snap); err != nil {
 		errs = append(errs, err)
 	}
-	// clear kubernetes config dir and subdirs: PKI, ETCD PKI with certificates
-	if err := os.RemoveAll(snap.KubernetesConfigDir()); err != nil {
-		errs = append(errs, err)
-	}
+	// // clear kubernetes config dir and subdirs: PKI, ETCD PKI with certificates
+	// if err := os.RemoveAll(snap.KubernetesConfigDir()); err != nil {
+	// 	errs = append(errs, err)
+	// }
 
 	// Remove worker node marker
 	if is, err := snaputil.IsWorker(snap); err == nil && is {
