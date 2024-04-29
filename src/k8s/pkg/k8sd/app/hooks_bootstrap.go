@@ -343,6 +343,8 @@ func (a *App) onBootstrapControlPlane(s *state.State, bootstrapConfig apiv1.Boot
 		return fmt.Errorf("kube-apiserver did not become ready in time: %w", err)
 	}
 
+	return fmt.Errorf("footgun")
+
 	a.NotifyFeatureController(
 		cfg.Network.GetEnabled(),
 		cfg.Gateway.GetEnabled(),
@@ -353,8 +355,6 @@ func (a *App) onBootstrapControlPlane(s *state.State, bootstrapConfig apiv1.Boot
 		cfg.DNS.GetEnabled(),
 	)
 	a.NotifyUpdateNodeConfigController()
-
-	return fmt.Errorf("footgun")
 
 	return nil
 }
